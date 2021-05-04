@@ -28,12 +28,12 @@ import io.swagger.annotations.Api;
 @Controller
 @Api
 @RequestMapping("/")
-public class EcelFileUploadController {
+public class ExcelFileUploadController {
 
 	private final StorageService storageService;
 
 	@Autowired
-	public EcelFileUploadController(StorageService storageService) {
+	public ExcelFileUploadController(StorageService storageService) {
 		this.storageService = storageService;
 	}
 
@@ -41,7 +41,7 @@ public class EcelFileUploadController {
 	public String listUploadedFiles(Model model) throws IOException {
 
 		model.addAttribute("files", storageService.loadAll().map(
-				path -> MvcUriComponentsBuilder.fromMethodName(EcelFileUploadController.class,
+				path -> MvcUriComponentsBuilder.fromMethodName(ExcelFileUploadController.class,
 						"serveFile", path.getFileName().toString()).build().toUri().toString())
 				.collect(Collectors.toList()));
 
