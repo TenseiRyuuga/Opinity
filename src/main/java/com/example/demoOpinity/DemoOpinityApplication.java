@@ -21,6 +21,9 @@ public class DemoOpinityApplication {
 		SpringApplication.run(DemoOpinityApplication.class, args);
 	}
 
+	// Each time we boot we delete all files stored and init the StorageService.
+	// This might not be desired behaviour but should save storage space if the
+	// server is rebooted regularly
 	@Bean
 	CommandLineRunner init(StorageService storageService) {
 		return (args) -> {
